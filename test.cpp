@@ -220,6 +220,7 @@ void Frodo1344Test()
 
     ZZ sgn;
     ZZ q=OriT[s]+ZZ(1);
+    // cout<<q<<endl;
     ZZ rnd1,rnd2;
     double t1,t2;
     int res=0;
@@ -309,7 +310,8 @@ void FalconTest()
     }
 
     ZZ sgn;
-    ZZ q=OriT[s]+ZZ(1);
+    ZZ q=OriT[s];
+    // cout<<q<<endl;
     ZZ rnd1,rnd2;
     double t1,t2;
     int res=0;
