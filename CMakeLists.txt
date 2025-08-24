@@ -19,9 +19,9 @@ project(DioAppr)
 
 # add_executable(test testsampler.cpp)
 
-add_executable(test test.cpp)
+# add_executable(test test.cpp)
 
-# add_executable(test testFrodo.cpp)
+add_executable(test testFrodo.cpp)
 # add_executable(test testFalcon.cpp)
 
 # add_executable(test testSVP.cpp)
@@ -29,5 +29,9 @@ add_executable(test test.cpp)
 # add_executable(test test0515.cpp)
 
 # add_executable(test cfrac.cpp)
+
+
+# add_executable(test SDSVP.cpp)
+
 
 target_link_libraries(test -lm -lgmp -lntl -lpthread -lssl -lcrypto )
