@@ -7,14 +7,12 @@
 #include <NTL/vec_ZZ.h>
 #include <NTL/vec_RR.h>
 #include <NTL/ZZ.h>
-#include <NTL/mat_ZZ.h> // <--- 修正 #2: 添加缺失的头文件
+#include <NTL/mat_ZZ.h> 
 
-// 使用NTL命名空间
+
 NTL_CLIENT
 
-// --- 修正 #1: 手动实现 Cholesky 分解 ---
-// 计算对称正定矩阵 G 的 Cholesky 分解 G = R^T * R
-// 其中 R 是一个上三角矩阵。
+
 void Cholesky(mat_RR& R, const mat_RR& G) {
     long n = G.NumRows();
     if (G.NumCols() != n) {
@@ -45,13 +43,11 @@ void Cholesky(mat_RR& R, const mat_RR& G) {
             R[j][i] = (G[j][i] - sum_prod) / R[j][j];
         }
     }
-    // 我们需要的是上三角矩阵 R，但上面的计算方式生成的是下三角 L 的转置
-    // 所以我们需要将结果转置以得到标准的上三角 R
+
     R = transpose(R);
 }
 
 
-// 辅助类，用于执行球形译码的核心递归逻辑 (无改动)
 class SphereDecoder {
 public:
     SphereDecoder(const mat_RR& R, RR& radius_sq, vec_ZZ& best_x, long& num_solutions)
@@ -121,7 +117,7 @@ private:
 };
 
 
-// 主函数，功能等同于 MATLAB 的 SDSVP
+
 void SDSVP(vec_ZZ& r, const mat_RR& H_in, const RR& radius) {
     mat_RR H = H_in;
     long m = H.NumRows();
@@ -141,7 +137,7 @@ void SDSVP(vec_ZZ& r, const mat_RR& H_in, const RR& radius) {
     G = transpose(H) * H;
 
     mat_RR R;
-    Cholesky(R, G); // <-- 使用我们新实现的 Cholesky 函数
+    Cholesky(R, G); 
 
     RR radius_sq = sqr(radius);
     vec_ZZ best_x;
